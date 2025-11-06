@@ -1,0 +1,255 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Contact | {% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Mi Empresa</title>
+    <!-- Vinculamos el CSS de Bootstrap, AOS, y Font Awesome para los iconos de redes sociales -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Tipografía personalizada */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a; /* Fondo oscuro */
+            color: #fff;
+        }
+
+        /* Cabecera de la página */
+        .contact-header {
+            background: #1e2a47; /* Azul oscuro */
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 50px;
+        }
+        .contact-header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .contact-header p {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        /* Contenedor del formulario */
+        .contact-form-container {
+            margin-top: 60px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .form-control:focus {
+            border-color: #2a3c67; /* Azul más oscuro */
+            box-shadow: 0 0 10px rgba(42, 60, 103, 0.5);
+        }
+
+        .contact-form-container form input,
+        .contact-form-container form textarea {
+            background: #333;
+            border: 1px solid #444;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form-container form input:focus,
+        .contact-form-container form textarea:focus {
+            border-color: #2a3c67;
+            box-shadow: 0 0 8px rgba(42, 60, 103, 0.5);
+        }
+
+        /* Botones con textura, brillo y aura */
+        .btn-animated {
+            background-color: #1e2a47; /* Azul oscuro */
+            border: 2px solid #1e2a47;
+            color: white;
+            padding: 12px 25px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            background-size: 200% 200%;
+            background-image: linear-gradient(45deg, #1e2a47, #2a3c67);
+        }
+
+        .btn-animated::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.6s ease;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+        }
+
+        .btn-animated:hover {
+            background-position: 100% 100%;
+            color: #f1f1f1;
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+            animation: aura 1.2s ease-out forwards;
+        }
+
+        .btn-animated:hover::before {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        .btn-animated:active {
+            transform: scale(0.98);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Efecto aura */
+        @keyframes aura {
+            0% {
+                box-shadow: 0 0 10px rgba(0, 150, 255, 0.5), 0 0 20px rgba(0, 150, 255, 0.4), 0 0 30px rgba(0, 150, 255, 0.3);
+            }
+            100% {
+                box-shadow: 0 0 20px rgba(0, 150, 255, 0.8), 0 0 40px rgba(0, 150, 255, 0.6), 0 0 60px rgba(0, 150, 255, 0.5);
+            }
+        }
+
+        /* Información de contacto */
+        .contact-info div {
+            transition: transform 0.4s ease, color 0.3s ease;
+        }
+        .contact-info div:hover {
+            transform: translateY(-10px);
+            color: #2a3c67; /* Azul oscuro */
+        }
+
+        /* Mapa de localización */
+        .map-container {
+            margin-top: 60px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animación de desvanecimiento para elementos */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Redes sociales */
+        .social-icons {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .social-icons a {
+            font-size: 24px;
+            margin: 0 15px;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #2a3c67; /* Azul oscuro */
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera de la página de contacto -->
+    <div class="contact-header" data-aos="fade-up">
+        <h1>Contacto</h1>
+        <p>Estamos aquí para ayudarte. Envíanos un mensaje y nos pondremos en contacto contigo pronto.</p>
+    </div>
+
+    <!-- Contenedor del formulario -->
+    <div class="container contact-form-container" data-aos="fade-up">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center">Formulario de Contacto</h3>
+                <form>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mensaje" class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="mensaje" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-animated w-100">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Información de contacto adicional -->
+    <div class="container contact-info" data-aos="fade-up">
+        <h3 class="text-center">Otra Forma de Contactarnos</h3>
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <h5>Teléfono</h5>
+                <p>(+34) 123 456 789</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <h5>Dirección</h5>
+                <p>Calle Ficticia, 123, Ciudad, País</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <h5>Correo Electrónico</h5>
+                <p>contacto@empresa.com</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Redes Sociales -->
+    <div class="social-icons">
+        <a href="https://www.facebook.com/tuempresa" target="_blank" class="fab fa-facebook"></a>
+        <a href="https://www.twitter.com/tuempresa" target="_blank" class="fab fa-twitter"></a>
+        <a href="https://www.instagram.com/tuempresa" target="_blank" class="fab fa-instagram"></a>
+        <a href="https://www.linkedin.com/company/tuempresa" target="_blank" class="fab fa-linkedin"></a>
+    </div>
+
+    <!-- Mapa de Localización -->
+    <div class="map-container">
+        <h3 class="text-center" data-aos="fade-up">Cómo Llegar</h3>
+        <iframe src="https://www.google.com/maps/embed?pb=... (tu enlace de Google Maps)" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Vinculamos los scripts de Bootstrap y AOS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Inicializamos AOS
+        AOS.init();
+    </script>
+</body>
+</html>
+{% endblock %}
