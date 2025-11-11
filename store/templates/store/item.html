@@ -14,11 +14,11 @@
             </h1>
             <hr>
             <h4><strong>Precio ${{ item.price }}</strong></h4>
-            <h4><strong>Vendedor ${{ item.created_by.username }}</strong></h4>
+            <h4><strong>Vendedor {{ item.created_by.username }}</strong></h4>
             {% if item.description %}
               <p>{{ item.description }}</p>
             {% endif %}
             <a href="" class="btn btn-dark">Contacte al Vendedor</a>
          
-        </div>    
+        </div>     
 {% endblock %}

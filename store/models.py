@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
-class category(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=225)
 
     class Meta:
@@ -12,8 +12,8 @@ class category(models.Model):
     def __str__(self):
         return self.name
     
-class item(models.Model):
-    category = models.ForeignKey(category, related_name="items", on_delete=models.CASCADE)
+class Item(models.Model):
+    category = models.ForeignKey(Category, related_name="items", on_delete=models.CASCADE)
     name = models.CharField(max_length=225)
     description = models.TextField(blank=True, null=True)
     price = models.FloatField()
