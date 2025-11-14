@@ -48,3 +48,8 @@ def register(request):
     }
 
     return render(request, 'store/signup.html', context)
+
+def logout_user(request):
+    logout(request)
+
+    return redirect('home')
