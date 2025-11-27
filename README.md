@@ -209,9 +209,9 @@ urlpatterns = [
 </div>
 {% endblock %}
 ```
-#Funcionalidad para que el usuario agregue articulos en la aplicacion siempre y cuando tenga acceso a la aplicacion store
+# Funcionalidad para que el usuario agregue articulos en la aplicacion siempre y cuando tenga acceso a la aplicacion store
 
-#forms.py
+# forms.py
 ```python
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -294,7 +294,7 @@ class NewItemForm(forms.ModelForm):
             }),
         }
 ```
-#urls.py
+# urls.py
 ```python
 from django.urls import path
 from django.contrib.auth import views as auth_views
@@ -311,7 +311,7 @@ urlpatterns = [
     path('detail/<int:pk>/', detail, name='detail'),
 ]
 ```
-#views.py
+# views.py
 ```python
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
@@ -391,7 +391,7 @@ def add_item(request):
 
     return render(request, 'store/form.html', context)
 ```
-#nav.html
+# nav.html
 ```html
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
     <div class="container-fluid">
@@ -442,7 +442,7 @@ def add_item(request):
 
 </nav>
 ```
-#form.html
+# form.html
 ```html
 
 {% extends 'store/base.html' %}
